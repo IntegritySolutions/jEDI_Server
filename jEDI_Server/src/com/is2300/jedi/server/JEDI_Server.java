@@ -69,6 +69,48 @@ import com.is2300.jedi.server.utils.Utilities;
  * @author Sean Carrick
  */
 public class JEDI_Server {
+    //<editor-fold desc=" "Global" Constant Declarations ">
+    /**
+     * <p>Application version numbers (Major, Minor, Revision and Build) will be
+     * handled as follows during merging on the GitHub server:</p>
+     * 
+     * <ol>
+     *  <li> If there is no conflict over modification of these "constants", 
+     *       then the merge will go through as requested.</li>
+     *  <li>If there is a conflict between these values during the merge, the
+     *      highest number will be used for the merge.</li>
+     * </ol>
+     * 
+     * <p>The only compilations that are counted for incrementing these values
+     * are the compilation of the code itself. JavaDoc generations do not count
+     * toward incrementing these values.</p>
+     */
+    /**
+     * Major application version number. This is updated when the Minor version
+     * number reaches 10. Instead of being 0.10.1.15, the Major version number
+     * will update to 1, so that the version will be 1.0.1.15.
+     */
+    public static final int APP_MAJOR = 0;
+    /**
+     * Minor application version number. This number will always be from 0 to 9.
+     * Once it hits 9, when it's time to increment, Major version number will be
+     * incremented and the Minor version number will revert to 0.
+     */
+    public static final int APP_MINOR = 1;
+    /**
+     * Revision application version number. This number will always be from 0 to
+     * 9. Once it hits 9, when it's time to increment, Minor version number will
+     * be incremented and the Revision version number will revert to 0.
+     */
+    public static final int APP_REVISION = 1;
+    /**
+     * Build application version number. This number will be incremented by 1
+     * each time the code is built/compiled. Each time this number hits a
+     * multiple of 50, the Revision version number will be incremented. This 
+     * number will only reset to 1 once the Major version number increments.
+     */
+    public static final int APP_BUILD = 15;
+    //</editor-fold>
 
     /**
      * Main entry point into the jEDI Server application. This function accepts
