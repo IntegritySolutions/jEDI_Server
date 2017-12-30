@@ -16,4 +16,4 @@ If anyone would like to contribute to this project, Integrity Solutions can alwa
 * Graphic Artists: To create icons/PNG graphics for use throughout the application.
 * Testers: To help us find bugs and feature failures in the software.
 
-If you would like to contribute in any of these functions, please shoot us an email at scarrick@is2300.com. We look forward to working with you on this project!
+If you would like to contribute in any of these functions, please shoot us an email at aschneblin@is2300.com or scarrick@is2300.com. We look forward to working with you on this project!
