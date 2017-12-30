@@ -75,5 +75,31 @@ package com.is2300.jedi.server.utils;
  * @author Sean Carrick
  */
 public class Utilities {
+    // Constants for use throughout the class.
+    private static final String DATE_SEPARATOR = "/";
+    private static final int MAX_MONTHS = 12;
+    private static final int MAX_DAYS = 31;
     
+    /**
+     * This function provides the capability of having a <code>String</code>
+     * properly formatted as a short date, i.e., 12/29/17. This function
+     * provides minor data validation once the <code>String</code> passed in is
+     * parsed into three (3) separate <code>String</code>s, to make sure that
+     * the parameter had been parsed correctly.
+     * 
+     * @param date <code>String</code> of improperly formatted short date.
+     * @return <code>String</code> of properly formatted short date.
+     */
+    public static String formatShortDate(String date) {
+        // Create a variable in which to format the short date.
+        String fmtDate = new String();
+        
+        // Create variables to hold the parsed date parameter values.
+        String day = new String();
+        String month = new String();
+        String year = new String();
+        
+        // Return the formatted short date.
+        return fmtDate;
+    }
 }
