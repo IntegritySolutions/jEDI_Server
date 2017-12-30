@@ -16,6 +16,8 @@
  */
 package com.is2300.jedi.server;
 
+import com.is2300.jedi.server.utils.Utilities;
+
 /**
  * <h2>jEDI_Server</h2>
  * <h3>Basic Description</h3>
@@ -77,7 +79,13 @@ public class JEDI_Server {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        ////////////////////////////////////////////////////////////////////////
+        // DEBUGGING CODE: Remove all bracketed code prior to release build.  //
+        ////////////////////////////////////////////////////////////////////////
+        System.out.println("171229: " + Utilities.formatShortDate("171229"));  
+        System.out.println("20151229: " + Utilities.formatShortDate("20151229"));
+        System.out.println(Utilities.formatShortDate("May 12, 2015"));        
+        ////////////////////////////////////////////////////////////////////////
     }
     
 }

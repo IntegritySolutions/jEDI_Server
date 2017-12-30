@@ -81,11 +81,16 @@ public class Utilities {
     private static final int MAX_DAYS = 31;
     
     /**
-     * This function provides the capability of having a <code>String</code>
+     * <p>This function provides the capability of having a <code>String</code>
      * properly formatted as a short date, i.e., 12/29/17. This function
      * provides minor data validation once the <code>String</code> passed in is
      * parsed into three (3) separate <code>String</code>s, to make sure that
-     * the parameter had been parsed correctly.
+     * the parameter had been parsed correctly.</p>
+     * 
+     * <p>The typical EDI date, as transmitted, is either YYMMDD or YYYYMMDD.
+     * Therefore, this function will need to determine the length of the date
+     * supplied to it, then parse the date accordingly in order to properly
+     * format it.</p>
      * 
      * @param date <code>String</code> of improperly formatted short date.
      * @return <code>String</code> of properly formatted short date.
@@ -98,6 +103,45 @@ public class Utilities {
         String day = new String();
         String month = new String();
         String year = new String();
+        
+        // Figure out how long the provided date is.
+        int length = date.length();
+        
+        // By default, it should only be six characters long, so we should be
+        //+ able to operate on it in the if block.
+        if ( length == 6 ) {
+            // Since this is a standard EDI date, parsing it should be easy.
+            // First, get the year, which should be the first two characters.
+            year = date.substring(0, 2);
+            
+            // Next, get the month.
+            month = date.substring(2, 4);
+            
+            // Lastly, get the day.
+            day = date.substring(4, 6);
+            
+            // Build up our formatted date string.
+            fmtDate = month + DATE_SEPARATOR + day + DATE_SEPARATOR + year;
+        } else if ( length == 8 ) {
+            // This is an unusual circumstance, but could possibly happen, so we
+            //+ need to account for it.
+            // First, get the year, but only the last two numbers.
+            year = date.substring(2, 4);
+            
+            // Next, get the month.
+            month = date.substring(4, 6);
+            
+            // Lastly, get the day.
+            day = date.substring(6, 8);
+            
+            // Build up our formatted date string.
+            fmtDate = month + DATE_SEPARATOR + day + DATE_SEPARATOR + year;
+        } else {
+            // This is a catch-all for dates that do not fall into either of the
+            //+ above categories.
+            // Print to the error stream that this is not a valid date.
+            System.err.println(date + " is not valid for this function.");
+        }
         
         // Return the formatted short date.
         return fmtDate;
