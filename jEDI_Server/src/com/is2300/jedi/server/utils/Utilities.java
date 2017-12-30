@@ -94,6 +94,10 @@ public class Utilities {
         // Create a variable in which to format the short date.
         String fmtDate = new String();
         
+        // Create variables to hold the parsed date parameter values.
+        String day = new String();
+        String month = new String();
+        String year = new String();
         
         // Return the formatted short date.
         return fmtDate;
