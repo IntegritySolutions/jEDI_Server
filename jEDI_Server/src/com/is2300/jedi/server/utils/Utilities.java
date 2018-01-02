@@ -41,11 +41,6 @@ package com.is2300.jedi.server.utils;
  *          short date. (i.e., 12/29/17)</td>
  *  </tr>
  *  <tr>
- *      <td>SQL Date</td>
- *      <td>Returns a <code>String</code> that contains a short date properly
- *          formatted for MySQL Database Server. (i.e., 171229)</td>
- *  </tr>
- *  <tr>
  *      <td>Medium Date</td>
  *      <td>Returns a <code>String</code> that contains a properly formatted
  *          medium date. (i.e., 12/29/2017)</td>
@@ -64,6 +59,11 @@ package com.is2300.jedi.server.utils;
  *       using proper HTML tagging to format the information in a consistent
  *       manner. -->
  * </table>
+ * 
+ * <p>We were going to have a function to format a date in such a way as to be
+ * acceptable to the MySQL Database Server backend, but the EDI date formats are
+ * already in the proper format for SQL. Therefore, that is why there is no such
+ * utility function.</p>
  * 
  * <p>Each utility function will provide more detail including, but not limited
  * to, the required parameter(s) for the function, any details regarding how the
@@ -144,6 +144,45 @@ public class Utilities {
         }
         
         // Return the formatted short date.
+        return fmtDate;
+    }
+
+    /**
+     * <p>This function provides the capability of have a <code>String</code>
+     * properly formatted as a medium date, i.e., 12/31/2017 or Dec 31, 2017. 
+     * This function provides minor data validation once the <code>String</code>
+     * passed in is parsed into three (3) separate <code>String</code>s, to make 
+     * sure that the parameter had been parsed correctly.</p>
+     * 
+     * <p>The typical EDI date, as transmitted, is either YYMMDD or YYYYMMDD.
+     * Therefore, this function will need to determine the length of the date
+     * supplied to it, then parse the date accordingly in order to properly
+     * format it.</p>
+     * 
+     * @param date <code>String</code> of improperly formatted SQL date.
+     * @param style <code>boolean</code> Either numerical (true) or alphabetical
+     *                                   (false).
+     * 
+     * @return <code>String</code> of properly formatted SQL date.
+     */
+    public static String formatMediumDate(String date, boolean style) {
+        // Create a variable to hold the formatted date to return.
+        String fmtDate = new String();
+        
+        // Create the variables to hold the parsed out parts of the date.
+        //+ Include an extra month variable to hold the alpha version of the
+        //+ month.
+        String month = new String();
+        String aMonth = new String();
+        String day = new String();
+        String year = new String();
+        
+        // Create a variable to determine that the improperly formatted date is
+        //+ of appropriate length to format into a medium date. I.e., eight (8)
+        //+ characters in length.
+        int length = date.length();
+        
+        // Return the formatted date.
         return fmtDate;
     }
 }
